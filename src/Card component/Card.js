@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import './Card.css'
+import { Link } from "react-router-dom";
+
 
 export default function Card(props) {
     const [quantity, setQuantity] = useState(0)
@@ -13,27 +15,32 @@ export default function Card(props) {
     }
 
     return(
-        <div className="card">
-            <div className="card__img">
-                <img src={props.details.image} alt="" srcset="" />
-            </div>
-            <div className="card__details">
-                
-                <p className={'cart__details_dec'}>
-                    {props.details.title}
-                    <p>NGN {props.details.price * 1000}</p>
-                </p>
+        <>
+            <div className="card">
 
-                <div className="cart__details--quantity">
-                    <p>Add to cart</p>
-                    <div className="quantity">
-                        <p className='quantity__q'>Quantity : {quantity} </p>
-                        <button onClick={handleDecreaseCount} disabled={quantity === 0}>-</button>
-                        <button onClick={handleIncreaseCount}>+</button>
-                    </div>
+                <div className="card__img">
+                    <Link to={`/products/${props.details.id}`}>
+                        <img src={props.details.image} alt="" srcset="" />
+                    </Link>
                 </div>
 
+                <div className="card__details">
+                    <Link to={`/products/${props.details.id}`}>
+                        <p className={'cart__details_dec'}>
+                            {props.details.title}
+                        </p>
+                        <p>NGN {props.details.price * 1000}</p>
+                    </Link>
+                    <div className="cart__details--quantity">
+                        <div className="quantity">
+                            <p className='quantity__q'>Quantity : {quantity} </p>
+                            <button onClick={handleDecreaseCount} disabled={quantity === 0}>-</button>
+                            <button onClick={handleIncreaseCount}>+</button>
+                        </div>
+                    </div>
+                    <button className='cart'>ADD TO CART</button>
+                </div>
             </div>
-        </div>
+        </>
     )
 }
