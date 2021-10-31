@@ -3,16 +3,24 @@ import './Container.css'
 import Card from "../Card component/Card";
 import useFetch from "../useFetch.js";
 import Loader from "../Loader.js";
+import '../index.css'
 
 
 export default function Container() {
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState(() => {
+        const getProduct = localStorage.getItem('products')
+        if(getProduct) {
+            return JSON.parse(getProduct)
+        } else {
+            return []
+        }
+    })
     const {get, setIsLoading, isLoading} = useFetch('https://fakestoreapi.com')
 
     useEffect(() => {
         get('/products')
         .then(data => {
-            // console.log({data})
+            localStorage.setItem('products', JSON.stringify(data))
             setProducts(data)
         })
         .catch(error => {
@@ -23,14 +31,10 @@ export default function Container() {
         })
     }, [])
 
-    console.log(typeof products)
-
     
-    const listproduct = products.map(product => {
+    const listproduct = products?.map(product => {
         return <Card details={product} key={product.id}/>
     })
-
-    console.log({listproduct})
 
     return <div className="container">
             <div className="text">
@@ -44,7 +48,7 @@ export default function Container() {
                         <option value="">Electronics </option>
                     </select>
             </div>
-            {(isLoading) ? <Loader /> : ''}
+            <div className="loader">{(isLoading) ? <Loader className='spinner'/> : ''}</div>
         <div className="card--container">
             { listproduct }
         </div>
