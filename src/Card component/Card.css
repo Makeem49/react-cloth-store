@@ -10,17 +10,19 @@
 
 }
 
+
 .card__img{
-    /* height: 70%; */
+    height: 65%;
     width: 100%;
     /* background-color: grey; */
     overflow: hidden;
 }
 
 .card__details{
-    height: 25%;
+    height: 35%;
     width: 100%;
     /* background-color: green; */
+    margin-top: 1em;
     padding: 0.5em;
     display: flex;
     flex-direction: column;
@@ -36,6 +38,7 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 0.2em;
+    margin-bottom: 0.5em;
 }
  
 button{
@@ -58,6 +61,21 @@ button{
     width: 70%;
     text-align: center;
 } */
+button.cart {
+    width: 80%;
+    text-align: center;
+    margin-top: 0.7em;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 0.3em 0.8em;
+    margin: 0 auto;
+    
+}
+
+.cart:hover, .cart:focus{
+    background-color: #2b1906;
+    color: white;
+}
 
 img{
     max-width: 100%;
@@ -68,5 +86,9 @@ img{
         width: 280px;
         height: 450px;
     }
-    
+
+    .card:hover{
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 25px;
+        /* box-shadow: rgba(0, 0, 0, 0.25) 0px 35px 1000px -12px; */
+    }
 }
