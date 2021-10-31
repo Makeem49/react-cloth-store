@@ -1,0 +1,43 @@
+.container {
+    width: 95%;
+    max-width: 1200px;
+    padding: 1em 0;
+    margin: 0 auto;
+}
+
+.text {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 1.5em;
+
+}
+
+.text__input, .text__select{
+    width: 100%;
+    padding: 0.5em;
+    font-size: 1rem;
+    margin-bottom: 0.5em;
+    background-color: lightgrey;
+}
+
+
+@media screen and (min-width : 600px) {
+    .container {
+        width: 80%;
+    }
+
+    .card--container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .text {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .text__select, .text__input {
+        width: 40%;
+    }
+}
