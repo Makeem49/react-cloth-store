@@ -81,6 +81,10 @@ img{
     max-width: 100%;
 }
 
+.productdetailProp{
+    display: none;
+}
+
 @media screen and (min-width : 600px) {
     .card {
         width: 280px;
