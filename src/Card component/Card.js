@@ -1,16 +1,19 @@
 import React, {useState} from "react";
 import './Card.css'
 import { Link } from "react-router-dom";
+import ProductDetails from "../ProductDetails/ProductDetails";
 
 
 export default function Card(props) {
     const [quantity, setQuantity] = useState(0)
 
     function handleIncreaseCount(e) {
+        console.log('Increase')
         setQuantity(prev => prev + 1)
     }
 
     function handleDecreaseCount(e) {
+        console.log("Decrease")
         setQuantity(prev => prev - 1)
     }
 
@@ -20,7 +23,7 @@ export default function Card(props) {
 
                 <div className="card__img">
                     <Link to={`/products/${props.details.id}`}>
-                        <img src={props.details.image} alt="" srcset="" />
+                        <img src={props.details.image} alt="" />
                     </Link>
                 </div>
 
@@ -40,6 +43,9 @@ export default function Card(props) {
                     </div>
                     <button className='cart'>ADD TO CART</button>
                 </div>
+            </div>
+            <div className="productdetailProp">
+                <ProductDetails toHandleIncrease={handleIncreaseCount} toHandleDecrease={handleDecreaseCount} quantity={quantity}/>
             </div>
         </>
     )
