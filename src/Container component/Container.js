@@ -8,7 +8,8 @@ import '../index.css'
 
 export default function Container() {
     const [products, setProducts] = useState(() => {
-        const getProduct = localStorage.getItem('products')
+        const getProduct = localStorage.getItem('data')
+        // console.log(getProduct)
         if(getProduct) {
             return JSON.parse(getProduct)
         } else {
@@ -20,7 +21,8 @@ export default function Container() {
     useEffect(() => {
         get('/products')
         .then(data => {
-            localStorage.setItem('products', JSON.stringify(data))
+            console.log(data)
+            localStorage.setItem('data', JSON.stringify(data))
             setProducts(data)
         })
         .catch(error => {
@@ -29,6 +31,11 @@ export default function Container() {
         .finally(() => {
             setIsLoading(false)
         })
+
+        return () => {
+            localStorage.clear()
+        }
+
     }, [])
 
     
