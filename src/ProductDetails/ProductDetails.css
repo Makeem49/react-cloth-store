@@ -1,7 +1,6 @@
 .product-container {
     width: 100%;
      padding: 2em 0;
-    background-color: aqua;
 }
 
 .product-details{
@@ -30,7 +29,7 @@ img {
     margin: 1em 0;
 }
 
-h3 {
+.details-title h3 {
     margin-bottom: 0.5em;
     border-bottom: 1px solid grey;
     padding-bottom: 0.5em;
@@ -38,7 +37,7 @@ h3 {
 }
 
 h4 {
-    text-decoration: line-through;
+    /* text-decoration: line-through; */
     display: inline;
 }
 
@@ -48,7 +47,29 @@ span{
     padding: 0.1em;
     margin-left: 1em;
 }
+
 .description-product{
     color: grey;
 }
 
+.category {
+    margin: 0.5em 0;
+}
+
+.rating strong{
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    padding:0.2em;
+    margin: 0.4em 0;
+}
+
+.reviews {
+    width: 90%;
+    margin: 1em auto;
+    text-align: start;
+}
+
+.user {
+    margin: 1em 0;
+}
