@@ -4,7 +4,7 @@ import Container from "./Container component/Container";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import About from "./About component/About";
 import Cart from "./Cart component/Cart";
-import ProductDetails from "./ProdcutDetails/ProductDetails";
+import ProductDetails from "./ProductDetails/ProductDetails.js";
 
 export default function App() {
   return <>
