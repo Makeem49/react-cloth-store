@@ -45,6 +45,27 @@ export default function Container() {
     }, [])
 
 
+    function handleSelect(e) {
+        let filterItem = e.target.value
+        console.log(filterItem)
+        get(`/products/category/${filterItem}`, {
+            mode : 'no-cors'
+        })
+        .then(data => {
+            localStorage.setItem('products', JSON.stringify(data))
+            setIsLoading(false)
+            localStorage.setItem('load', isLoading)
+            console.log(data)
+            setProducts(data)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+        .finally(() => {
+            setIsLoading(false)
+        })
+    }
+
     
     const listproduct = products?.map(product => {
         return <Card details={product} key={product.id}/>
@@ -54,12 +75,12 @@ export default function Container() {
             <div className="text">
                     <input type="text" className='text__input' placeholder={'Search product'}/>
             
-                    <select name="" id="" className='text__select'>
+                    <select name="" id="" className='text__select' onChange={handleSelect}>
                         <option value="">Select category</option>
-                        <option value="">Men Clothing</option>
-                        <option value="">Jewelery</option>
-                        <option value="">Women Clothing</option>
-                        <option value="">Electronics </option>
+                        <option value="men's clothing">Men Clothing</option>
+                        <option value="jewelery">Jewelery</option>
+                        <option value="women's clothing">Women Clothing</option>
+                        <option value="electronics">Electronics </option>
                     </select>
             </div>
             <div className="loader">{(isLoading) ? <Loader className='spinner'/> : ''}</div>
