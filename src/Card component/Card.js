@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import './Card.css'
 import { Link } from "react-router-dom";
-import ProductDetails from "../ProductDetails/ProductDetails";
+import ProductDetails from "../ProductDetails/ProductDetails.js";
 
 
 export default function Card(props) {
@@ -44,9 +44,11 @@ export default function Card(props) {
                     <button className='cart'>ADD TO CART</button>
                 </div>
             </div>
-            <div className="productdetailProp">
-                <ProductDetails toHandleIncrease={handleIncreaseCount} toHandleDecrease={handleDecreaseCount} quantity={quantity}/>
-            </div>
+
+            {/* <div className="productdetailProp">
+                <ProductDetails toHandleIncrease={handleIncreaseCount} 
+                toHandleDecrease={handleDecreaseCount} quantity={quantity}/>
+            </div> */}
         </>
     )
 }
