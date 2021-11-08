@@ -1,31 +1,26 @@
 import React, {useEffect, useState} from "react";
 import useFetch from "../useFetch";
-import { useRouteMatch, useParams } from "react-router";
+import { useRouteMatch } from "react-router";
 import Loader from "../Loader";
 import './ProductDetails.css'
 
-export default function ProductDetails(props) {
-    // console.log(props)
+export default function ProductDetails() {
     const {get} = useFetch('https://fakestoreapi.com')
     const {url} = useRouteMatch()
     const [isLoading, setIsLoading] = useState(true)
     const [product, setProduct] = useState({})
-    const {quantity, toHandleDecrease, toHandleIncrease} = props
 
     const amount = product.price * 0.2
     const discount = product.price - amount
     const amountOff = product.price * 0.8
     const discountPer = product.price - amountOff
 
-    const randomNum = (min,max) => {
-        return Math.floor(Math.random() * (max - min) + max )
-    }
-
     useEffect(() => {
         get('/'+url)
         .then(data => {
             localStorage.setItem('product', JSON.stringify(data))
             setProduct(data)
+            setIsLoading(false)
         })
         .catch(error => {
             console.error(error)
@@ -54,7 +49,7 @@ export default function ProductDetails(props) {
                     <p> Category :  {product.category}</p>
                 </div>
                 <div className="rating">
-                    <p><strong>rating</strong> : {product?.rating.rate}</p>
+                    {/* <p><strong>rating</strong> : {product?.rating.rate}</p> */}
                 </div>
 
 
