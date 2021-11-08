@@ -7,6 +7,21 @@
 html {
   font-size: 16px;
 }
+
+.dark {
+  background-color: black;
+  color: white;
+}
+
+.light {
+  background-color: white;
+  color: black;
+}
+
+
+
+
+
 .loader{
   display: flex;
   justify-content: center;
