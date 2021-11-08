@@ -4,25 +4,36 @@ import Card from "../Card component/Card";
 import useFetch from "../useFetch.js";
 import Loader from "../Loader.js";
 import '../index.css'
+import ProductDetails from "../ProductDetails/ProductDetails";
 
 
 export default function Container() {
     const [products, setProducts] = useState(() => {
-        const getProduct = localStorage.getItem('data')
-        // console.log(getProduct)
-        if(getProduct) {
+        const getProduct = localStorage.getItem('products')
+        if (getProduct) {
             return JSON.parse(getProduct)
         } else {
             return []
         }
     })
-    const {get, setIsLoading, isLoading} = useFetch('https://fakestoreapi.com')
+    const [isLoading , setIsLoading ] = useState(() => {
+        const load = localStorage.getItem('load')
+        if (load) {
+            return false 
+        }
+        return true
+    })
+
+    const {get} = useFetch('https://fakestoreapi.com')
 
     useEffect(() => {
-        get('/products')
+        get(`/products`, {
+            mode : 'no-cors'
+        })
         .then(data => {
-            console.log(data)
-            localStorage.setItem('data', JSON.stringify(data))
+            localStorage.setItem('products', JSON.stringify(data))
+            setIsLoading(false)
+            localStorage.setItem('load', isLoading)
             setProducts(data)
         })
         .catch(error => {
@@ -31,12 +42,8 @@ export default function Container() {
         .finally(() => {
             setIsLoading(false)
         })
-
-        return () => {
-            localStorage.clear()
-        }
-
     }, [])
+
 
     
     const listproduct = products?.map(product => {
