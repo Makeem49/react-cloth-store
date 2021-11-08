@@ -14,11 +14,11 @@ nav {
 }
 
 .row {
-    width: 100%;
+  width: 100%;
 }
 
 .links {
-    display: none;
+  display: none;
 }
 
 a {
@@ -35,36 +35,108 @@ li {
   font-size: 1.5em;
 }
 
+.sidebar {
+  display: none;
+  position: fixed;
+  top: 3.7em;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 70%;
+  background-color: grey;
+  padding: 3.5em 0em;
+  z-index: 1000;
+}
+
+.show {
+  /* transition:; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.sidebar_li--row + .sidebar_li--row {
+  margin-top: 2em;
+}
+
+.sidebar_li--row:hover,
+.sidebar_li--row:focus {
+  opacity: 0.5;
+}
+
+.sidebar_li--row {
+  font-size: 1.4em;
+  margin-left: 2em;
+  color: white;
+}
+
+.sidebar_bottom {
+  align-self: center;
+}
+
+.mode {
+  all: unset;
+  display: block;
+  margin-left: 0em ;
+  color: black;
+  width: 5em;
+  background-color: white;
+  text-align: start;
+  padding: 0.2em;
+  border-radius: 1em;
+  cursor: pointer;
+}
+
+/* .mode */
+
+@keyframes slide-in {
+  0% {
+    transform: translate(-500px);    
+  }
+  100% {
+    transform: translate(0px);
+  }
+}
 
 @media screen and (min-width: 600px) {
-    .nav {
-        width: 80%;
-        display: flex;
-        margin: 0 auto;
-        justify-content: space-between;
-        align-items: center;
-        /* padding: 0 1em ; */
-    }
+  .nav {
+    width: 80%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 0 1em ; */
+  }
 
-    .links {
-        display: block;
-        /* width: 40%; */
-    }
+  .links {
+    display: inline;
+    /* width: 40%; */
+  }
 
-    .links__li {
-        display: flex;
-    }
+  .links__li {
+    display: flex;
+  }
 
-    .links_li--row{
-        width: 100%;
-        font-size: 1.1rem;
-    }
+  .links_li--row {
+    width: 100%;
+    font-size: 1.1rem;
+  }
 
-    .links_li--row:hover, .links_li--row:focus{
-        opacity: 0.7;
-    }
+  .links_li--row:hover,
+  .links_li--row:focus {
+    opacity: 0.7;
+  }
 
-    .links_li--row + .links_li--row {
-        margin-left: 20px ;
-    }
+  .links_li--row + .links_li--row {
+    margin-left: 20px;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .show {
+    display: none;
+  }
 }
